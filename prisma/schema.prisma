@@ -1,0 +1,28 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+// User
+
+enum Role {
+  ADMIN
+  USER
+  BANNED
+}
+
+model User {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  email    String @unique
+  name     String @unique // name = username: name weil nextauth
+  password String
+  role     Role   @default(USER)
+  image    String @default("https://wallpapers-clan.com/wp-content/uploads/2022/07/anime-default-pfp-5.jpg")
+}
