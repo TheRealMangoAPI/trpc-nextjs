@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 
-import { trpc } from './_trpc/client'
+import { trpc } from '@trpc-client'
 
 export default function Home() {
   const kek = trpc.helloWorld.useQuery();
