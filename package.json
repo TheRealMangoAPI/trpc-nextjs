@@ -15,7 +15,9 @@
     "@trpc/client": "^10.41.0",
     "@trpc/react-query": "^10.41.0",
     "@trpc/server": "^10.41.0",
+    "framer-motion": "^10.16.4",
     "next": "14.0.1",
+    "next-auth": "^4.24.4",
     "react": "^18",
     "react-dom": "^18",
     "zod": "^3.22.4"

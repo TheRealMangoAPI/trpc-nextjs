@@ -21,6 +21,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@trpc-client": ["./src/server/client.ts"],
+      "@trpc": ["./src/server/trpc.ts"],
       "@components/*": ["./src/components/*"],
     }
   },
