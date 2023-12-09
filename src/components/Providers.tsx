@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import { trpc } from "../server/client";
 import { SessionProvider } from "next-auth/react";
 import { NextUIProvider } from "@nextui-org/react";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(() => new QueryClient({}));
@@ -21,13 +22,15 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <NextUIProvider>
-      <SessionProvider>
-        <trpc.Provider client={trpcClient} queryClient={queryClient}>
-          <QueryClientProvider client={queryClient}>
-            {children}
-          </QueryClientProvider>
-        </trpc.Provider>
-      </SessionProvider>
+      <NextThemesProvider attribute="class" defaultTheme="dark">
+        <SessionProvider>
+          <trpc.Provider client={trpcClient} queryClient={queryClient}>
+            <QueryClientProvider client={queryClient}>
+              {children}
+            </QueryClientProvider>
+          </trpc.Provider>
+        </SessionProvider>
+      </NextThemesProvider>
     </NextUIProvider>
   );
 }
